@@ -22,7 +22,7 @@ const modules = [
   {id:'obm',name:'ОБМ',description:'Переход в модуль ОБМ',icon:'layers'}
 ];
 const destination = module => module.url || `#${module.id}`;
-for(const module of modules){
+for(const module of modules.filter(module => module.url)){
   const card=document.createElement('a');
   card.className=`module-card${module.primary?'':' secondary-card'}`;
   card.href=destination(module);

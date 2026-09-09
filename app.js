@@ -17,7 +17,7 @@ const modules = [
   {id:'sva',name:'СВА',code:'СВА',description:'Службы внутреннего аудита',icon:'audit',primary:true,url:'https://saq-sva-test.vercel.app/'},
   {id:'prof',name:'Профилактический контроль',code:'ПК',description:'Проведение контроля и исполнение решений',icon:'shield',primary:true,url:'https://saq-prof-test.vercel.app/'},
   {id:'sur',name:'СУР',description:'Система управления рисками',icon:'risk',url:'https://saq-sur-test.vercel.app/'},
-  {id:'objections',name:'Возражения',description:'Рассмотрение возражений',icon:'message'},
+  {id:'objections',name:'Возражения',description:'Рассмотрение возражений',icon:'message',url:'https://saq-objections-test.vercel.app/'},
   {id:'analytics',name:'Аналитика',description:'Аналитические данные и отчётность',icon:'chart'},
   {id:'obm',name:'ОБМ',description:'Переход в модуль ОБМ',icon:'layers'}
 ];

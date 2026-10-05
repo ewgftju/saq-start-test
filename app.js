@@ -21,7 +21,21 @@ const modules = [
   {id:'analytics',name:'Аналитика',description:'Аналитические данные и отчётность',icon:'chart'},
   {id:'obm',name:'ОБМ',description:'Переход в модуль ОБМ',icon:'layers'}
 ];
-const destination = module => module.url || `#${module.id}`;
+const userSelect=document.getElementById('demo-user');
+try { userSelect.value=localStorage.getItem('saq.demo.user.v1')==='saq-demo-superuser'?'saq-demo-superuser':'standard'; } catch {}
+const destination = module => {
+  if(!module.url)return `#${module.id}`;
+  const url=new URL(module.url);
+  if(userSelect.value==='saq-demo-superuser')url.searchParams.set('demoUser',userSelect.value);
+  return url.href;
+};
+userSelect.addEventListener('change',()=>{
+  try { localStorage.setItem('saq.demo.user.v1',userSelect.value); } catch {}
+  document.querySelectorAll('a[data-module]').forEach(link=>{
+    const module=modules.find(item=>item.id===link.dataset.module);
+    if(module)link.href=destination(module);
+  });
+});
 for(const module of modules.filter(module => module.url)){
   const card=document.createElement('a');
   card.className=`module-card${module.primary?'':' secondary-card'}`;
